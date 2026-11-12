@@ -1,0 +1,8 @@
+node_modules/
+reports/
+cypress.env.json
+.env
+.DS_Store
+.cache/
+.tools/
+audit-initial.json

@@ -1,0 +1,54 @@
+{
+  "name": "sparkrock-assessment",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Risk-based Sauce Demo UI assessment using Cypress, JavaScript and Cucumber",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "cy:open": "cypress open",
+    "test": "node scripts/run.cjs regression",
+    "test:smoke": "node scripts/run.cjs smoke",
+    "test:regression": "node scripts/run.cjs regression",
+    "test:fast": "node scripts/run.cjs fast",
+    "test:network": "node scripts/run.cjs network",
+    "test:assumptions": "node scripts/run.cjs assumptions",
+    "test:all": "node scripts/run.cjs all",
+    "test:recording": "node scripts/run.cjs recording",
+    "test:chrome": "node scripts/run.cjs regression chrome",
+    "test:edge": "node scripts/run.cjs regression edge",
+    "report": "node scripts/report.cjs",
+    "report:serve": "node scripts/serve-report.cjs",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check:coverage": "node scripts/check-coverage.cjs"
+  },
+  "devDependencies": {
+    "cypress": "16.3.0",
+    "@badeball/cypress-cucumber-preprocessor": "28.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "2.2.8",
+    "esbuild": "0.25.12",
+    "multiple-cucumber-html-reporter": "4.6.0",
+    "eslint": "9.39.1",
+    "@eslint/js": "9.39.1",
+    "globals": "16.5.0",
+    "prettier": "3.6.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+      "cypress/steps/**/*.js"
+    ],
+    "filterSpecs": true,
+    "omitFiltered": true,
+    "json": {
+      "enabled": true,
+      "output": "reports/current/json/cucumber.json"
+    },
+    "messages": {
+      "enabled": true,
+      "output": "reports/current/cucumber.ndjson"
+    }
+  }
+}

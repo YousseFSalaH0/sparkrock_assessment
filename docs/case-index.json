@@ -1,0 +1,639 @@
+[
+  {
+    "id": "TC-01",
+    "area": "Authentication",
+    "title": "Valid standard login",
+    "kind": "Positive",
+    "priority": "P0",
+    "steps": [
+      "Given I am on the login page",
+      "When I log in with username \"standard_user\" and password \"secret_sauce\"",
+      "Then the product catalog is displayed"
+    ],
+    "tags": "@smoke",
+    "file": "cypress/e2e/01-authentication.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-02",
+    "area": "Authentication",
+    "title": "Incorrect password",
+    "kind": "Negative",
+    "priority": "P1",
+    "steps": [
+      "Given I am on the login page",
+      "When I log in with username \"standard_user\" and password \"incorrect\"",
+      "Then login is rejected with \"Username and password do not match any user in this service\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/01-authentication.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-03",
+    "area": "Authentication",
+    "title": "Unknown username",
+    "kind": "Negative",
+    "priority": "P1",
+    "steps": [
+      "Given I am on the login page",
+      "When I log in with username \"unknown_person\" and password \"secret_sauce\"",
+      "Then login is rejected with \"Username and password do not match any user in this service\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/01-authentication.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-04",
+    "area": "Authentication",
+    "title": "Missing username",
+    "kind": "Negative",
+    "priority": "P1",
+    "steps": [
+      "Given I am on the login page",
+      "When I log in with username \"\" and password \"secret_sauce\"",
+      "Then login is rejected with \"Username is required\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/01-authentication.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-05",
+    "area": "Authentication",
+    "title": "Missing password",
+    "kind": "Negative",
+    "priority": "P1",
+    "steps": [
+      "Given I am on the login page",
+      "When I log in with username \"standard_user\" and password \"\"",
+      "Then login is rejected with \"Password is required\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/01-authentication.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-06",
+    "area": "Authentication",
+    "title": "Both login fields empty",
+    "kind": "Negative",
+    "priority": "P1",
+    "steps": [
+      "Given I am on the login page",
+      "When I log in with username \"\" and password \"\"",
+      "Then login is rejected with \"Username is required\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/01-authentication.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-07",
+    "area": "Authentication",
+    "title": "Locked-out account",
+    "kind": "Negative",
+    "priority": "P1",
+    "steps": [
+      "Given I am on the login page",
+      "When I log in with username \"locked_out_user\" and password \"secret_sauce\"",
+      "Then login is rejected with \"Sorry, this user has been locked out.\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/01-authentication.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-08",
+    "area": "Authentication",
+    "title": "Logout protects direct inventory navigation",
+    "kind": "Negative",
+    "priority": "P0",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I log out and revisit the inventory URL",
+      "Then I must sign in again"
+    ],
+    "tags": "",
+    "file": "cypress/e2e/01-authentication.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-09",
+    "area": "Catalog",
+    "title": "Catalog completeness and price integrity",
+    "kind": "Positive",
+    "priority": "P1",
+    "steps": [
+      "Given I am signed in through the UI",
+      "Then all six products have the expected names prices and descriptions"
+    ],
+    "tags": "",
+    "file": "cypress/e2e/02-catalog.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-10",
+    "area": "Catalog",
+    "title": "Product sorting az",
+    "kind": "Positive",
+    "priority": "P2",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I sort products by \"az\"",
+      "Then products are ordered by \"az\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/02-catalog.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-11",
+    "area": "Catalog",
+    "title": "Product sorting za",
+    "kind": "Positive",
+    "priority": "P2",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I sort products by \"za\"",
+      "Then products are ordered by \"za\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/02-catalog.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-12",
+    "area": "Catalog",
+    "title": "Product sorting lohi",
+    "kind": "Positive",
+    "priority": "P2",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I sort products by \"lohi\"",
+      "Then products are ordered by \"lohi\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/02-catalog.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-13",
+    "area": "Catalog",
+    "title": "Product sorting hilo",
+    "kind": "Positive",
+    "priority": "P2",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I sort products by \"hilo\"",
+      "Then products are ordered by \"hilo\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/02-catalog.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-14",
+    "area": "Catalog",
+    "title": "Product details and return navigation",
+    "kind": "Positive",
+    "priority": "P1",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I open the details for \"Sauce Labs Backpack\"",
+      "Then the details match \"Sauce Labs Backpack\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/02-catalog.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-15",
+    "area": "Cart",
+    "title": "Add one product and update badge",
+    "kind": "Positive",
+    "priority": "P0",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I add \"Sauce Labs Backpack\" to the cart",
+      "Then the cart badge shows 1 items",
+      "When I open the cart",
+      "Then the cart contains exactly \"Sauce Labs Backpack\""
+    ],
+    "tags": "@smoke",
+    "file": "cypress/e2e/03-cart.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-16",
+    "area": "Cart",
+    "title": "Remove from catalog resets badge",
+    "kind": "Boundary",
+    "priority": "P1",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I add \"Sauce Labs Backpack\" to the cart",
+      "And I remove \"Sauce Labs Backpack\" from the catalog",
+      "Then the cart badge shows 0 items",
+      "When I open the cart",
+      "Then the cart is empty"
+    ],
+    "tags": "",
+    "file": "cypress/e2e/03-cart.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-17",
+    "area": "Cart",
+    "title": "Remove final product from cart",
+    "kind": "Boundary",
+    "priority": "P1",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I add \"Sauce Labs Backpack\" to the cart",
+      "And I open the cart",
+      "And I remove \"Sauce Labs Backpack\" from the cart",
+      "Then the cart is empty"
+    ],
+    "tags": "",
+    "file": "cypress/e2e/03-cart.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-18",
+    "area": "Cart",
+    "title": "Cart survives page reload",
+    "kind": "Positive",
+    "priority": "P1",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I add \"Sauce Labs Backpack\" to the cart",
+      "And I open the cart",
+      "And I reload the page",
+      "Then the cart contains exactly \"Sauce Labs Backpack\"",
+      "And the cart badge shows 1 items"
+    ],
+    "tags": "",
+    "file": "cypress/e2e/03-cart.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-19",
+    "area": "Cart",
+    "title": "Continue shopping preserves selection",
+    "kind": "Positive",
+    "priority": "P2",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I add \"Sauce Labs Backpack\" to the cart",
+      "And I open the cart",
+      "And I continue shopping",
+      "Then the product catalog is displayed",
+      "And the cart badge shows 1 items"
+    ],
+    "tags": "",
+    "file": "cypress/e2e/03-cart.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-20",
+    "area": "Cart",
+    "title": "All available products retained once",
+    "kind": "Boundary",
+    "priority": "P1",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I add all six products to the cart",
+      "Then the cart badge shows 6 items",
+      "When I open the cart",
+      "Then the cart contains all six products"
+    ],
+    "tags": "",
+    "file": "cypress/e2e/03-cart.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-21",
+    "area": "Checkout",
+    "title": "Valid information advances to correct review",
+    "kind": "Positive",
+    "priority": "P0",
+    "steps": [
+      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
+      "When I enter valid customer information",
+      "And I continue to order review",
+      "Then the review contains \"Sauce Labs Backpack\" with correct totals"
+    ],
+    "tags": "",
+    "file": "cypress/e2e/04-checkout.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-22",
+    "area": "Checkout",
+    "title": "Required firstName validation",
+    "kind": "Negative",
+    "priority": "P1",
+    "steps": [
+      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
+      "When I leave \"firstName\" blank and complete the other customer fields",
+      "And I continue to order review",
+      "Then checkout is blocked with \"First Name is required\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/04-checkout.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-23",
+    "area": "Checkout",
+    "title": "Required lastName validation",
+    "kind": "Negative",
+    "priority": "P1",
+    "steps": [
+      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
+      "When I leave \"lastName\" blank and complete the other customer fields",
+      "And I continue to order review",
+      "Then checkout is blocked with \"Last Name is required\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/04-checkout.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-24",
+    "area": "Checkout",
+    "title": "Required postalCode validation",
+    "kind": "Negative",
+    "priority": "P1",
+    "steps": [
+      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
+      "When I leave \"postalCode\" blank and complete the other customer fields",
+      "And I continue to order review",
+      "Then checkout is blocked with \"Postal Code is required\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/04-checkout.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-25",
+    "area": "Checkout",
+    "title": "All checkout fields empty",
+    "kind": "Negative",
+    "priority": "P1",
+    "steps": [
+      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
+      "When I continue to order review",
+      "Then checkout is blocked with \"First Name is required\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/04-checkout.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-26",
+    "area": "Checkout",
+    "title": "Recover from validation without losing cart",
+    "kind": "Negative/recovery",
+    "priority": "P0",
+    "steps": [
+      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
+      "When I leave \"postalCode\" blank and complete the other customer fields",
+      "And I continue to order review",
+      "Then checkout is blocked with \"Postal Code is required\"",
+      "When I enter valid customer information",
+      "And I continue to order review",
+      "Then the review contains \"Sauce Labs Backpack\" with correct totals"
+    ],
+    "tags": "@recording @smoke",
+    "file": "cypress/e2e/04-checkout.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-27",
+    "area": "Checkout",
+    "title": "Cancel customer information returns to cart",
+    "kind": "Positive",
+    "priority": "P1",
+    "steps": [
+      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
+      "When I cancel checkout",
+      "Then I return to the cart with \"Sauce Labs Backpack\""
+    ],
+    "tags": "",
+    "file": "cypress/e2e/04-checkout.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-28",
+    "area": "Checkout",
+    "title": "Cancel review returns to products",
+    "kind": "Positive",
+    "priority": "P1",
+    "steps": [
+      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
+      "When I enter valid customer information",
+      "And I continue to order review",
+      "And I cancel checkout",
+      "Then I return to products with 1 items retained"
+    ],
+    "tags": "",
+    "file": "cypress/e2e/04-checkout.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-29",
+    "area": "Checkout",
+    "title": "Complete two-product purchase through UI",
+    "kind": "Positive/E2E",
+    "priority": "P0",
+    "steps": [
+      "Given I reach checkout through the UI with \"Sauce Labs Backpack | Sauce Labs Bike Light\"",
+      "When I enter valid customer information",
+      "And I continue to order review",
+      "Then the review contains \"Sauce Labs Backpack | Sauce Labs Bike Light\" with correct totals",
+      "When I finish the order",
+      "Then the order is confirmed and the cart is cleared"
+    ],
+    "tags": "@recording @smoke",
+    "file": "cypress/e2e/04-checkout.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-30",
+    "area": "Focused checkout",
+    "title": "Single-product totals with direct setup",
+    "kind": "Positive",
+    "priority": "P1",
+    "steps": [
+      "Given checkout is prepared directly with \"Sauce Labs Onesie\"",
+      "When I enter valid customer information",
+      "And I continue to order review",
+      "Then the review contains \"Sauce Labs Onesie\" with correct totals"
+    ],
+    "tags": "@fast",
+    "file": "cypress/e2e/05-focused-checkout.feature",
+    "mode": "Automated / direct setup"
+  },
+  {
+    "id": "TC-31",
+    "area": "Focused checkout",
+    "title": "Multi-product totals and rounding",
+    "kind": "Boundary",
+    "priority": "P0",
+    "steps": [
+      "Given checkout is prepared directly with \"Sauce Labs Onesie | Sauce Labs Bike Light | Sauce Labs Fleece Jacket\"",
+      "When I enter valid customer information",
+      "And I continue to order review",
+      "Then the review contains \"Sauce Labs Onesie | Sauce Labs Bike Light | Sauce Labs Fleece Jacket\" with correct totals"
+    ],
+    "tags": "@fast",
+    "file": "cypress/e2e/05-focused-checkout.feature",
+    "mode": "Automated / direct setup"
+  },
+  {
+    "id": "TC-32",
+    "area": "Focused checkout",
+    "title": "Order completion clears prepared cart",
+    "kind": "Positive",
+    "priority": "P0",
+    "steps": [
+      "Given checkout is prepared directly with \"Sauce Labs Backpack\"",
+      "When I enter valid customer information",
+      "And I continue to order review",
+      "And I finish the order",
+      "Then the order is confirmed and the cart is cleared"
+    ],
+    "tags": "@fast",
+    "file": "cypress/e2e/05-focused-checkout.feature",
+    "mode": "Automated / direct setup"
+  },
+  {
+    "id": "TC-33",
+    "area": "Focused checkout",
+    "title": "Cancel preserves prepared multi-item cart",
+    "kind": "Positive",
+    "priority": "P1",
+    "steps": [
+      "Given checkout is prepared directly with \"Sauce Labs Backpack | Sauce Labs Bike Light\"",
+      "When I cancel checkout",
+      "Then I return to the cart with \"Sauce Labs Backpack | Sauce Labs Bike Light\""
+    ],
+    "tags": "@fast",
+    "file": "cypress/e2e/05-focused-checkout.feature",
+    "mode": "Automated / direct setup"
+  },
+  {
+    "id": "TC-34",
+    "area": "Focused checkout",
+    "title": "International customer and leading-zero postal code",
+    "kind": "Boundary",
+    "priority": "P2",
+    "steps": [
+      "Given checkout is prepared directly with \"Sauce Labs Backpack\"",
+      "When I enter customer information",
+      "  | firstName | Zoë |",
+      "  | lastName | O'Neil |",
+      "  | postalCode | 00123 |",
+      "And I continue to order review",
+      "Then the review contains \"Sauce Labs Backpack\" with correct totals"
+    ],
+    "tags": "@fast",
+    "file": "cypress/e2e/05-focused-checkout.feature",
+    "mode": "Automated / direct setup"
+  },
+  {
+    "id": "TC-35",
+    "area": "Network",
+    "title": "Product image replaced without blocking shopping",
+    "kind": "Positive",
+    "priority": "P2",
+    "steps": [
+      "Given the backpack image response is \"replaced\"",
+      "And I am signed in through the UI",
+      "Then the \"replaced\" image response is observed and shopping still works"
+    ],
+    "tags": "@network",
+    "file": "cypress/e2e/06-network.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-36",
+    "area": "Network",
+    "title": "Product image unavailable without blocking shopping",
+    "kind": "Negative/resilience",
+    "priority": "P2",
+    "steps": [
+      "Given the backpack image response is \"unavailable\"",
+      "And I am signed in through the UI",
+      "Then the \"unavailable\" image response is observed and shopping still works"
+    ],
+    "tags": "@network",
+    "file": "cypress/e2e/06-network.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-37",
+    "area": "Assumptions",
+    "title": "Reject whitespace-only first name",
+    "kind": "Negative/assumption",
+    "priority": "P1",
+    "steps": [
+      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
+      "When I enter customer information",
+      "  | firstName | <spaces> |",
+      "  | lastName | Tester |",
+      "  | postalCode | 02108 |",
+      "And I continue to order review",
+      "Then whitespace-only first name is rejected under assumption A-03"
+    ],
+    "tags": "@assumption",
+    "file": "cypress/e2e/07-assumptions.feature",
+    "mode": "Automated / proposed requirement"
+  },
+  {
+    "id": "TC-38",
+    "area": "Assumptions",
+    "title": "Prevent empty-cart order",
+    "kind": "Negative/assumption",
+    "priority": "P1",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I attempt checkout with an empty cart",
+      "Then an empty order is blocked under assumption A-04"
+    ],
+    "tags": "@assumption",
+    "file": "cypress/e2e/07-assumptions.feature",
+    "mode": "Automated / proposed requirement"
+  },
+  {
+    "id": "TC-39",
+    "area": "Manual",
+    "title": "Keyboard and screen-reader checkout journey",
+    "kind": "Accessibility",
+    "priority": "P1",
+    "steps": [
+      "Given a clean browser with keyboard and a screen reader available",
+      "When I navigate login, products, cart and checkout without a mouse",
+      "Then focus is visible and logical, controls have meaningful names, errors are discoverable, and there is no keyboard trap"
+    ],
+    "tags": "@manual",
+    "mode": "Manual / not executed"
+  },
+  {
+    "id": "TC-40",
+    "area": "Manual",
+    "title": "Responsive layout and zoom readability",
+    "kind": "Usability/boundary",
+    "priority": "P2",
+    "steps": [
+      "Given a standard-user shopping session",
+      "When I inspect login, products, cart, information, review and completion at 375x812, 768x1024 and 1280x800 and at 200 percent browser zoom",
+      "Then essential content remains readable, controls do not overlap or disappear, and checkout remains usable"
+    ],
+    "tags": "@manual",
+    "mode": "Manual / not executed"
+  }
+]
