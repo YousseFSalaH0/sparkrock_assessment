@@ -9,14 +9,21 @@ const { generateReport } = require('./report.cjs');
 const profiles = {
   regression: '@regression',
   smoke: '@smoke',
+  recording: '@smoke',
   'full-regression': '@full-regression',
   all: '@full-regression',
 };
+// Restrict the recording to checkout smoke scenarios without adding another tag.
+const profileSpecs = { recording: 'cypress/e2e/04-checkout.feature' };
 const cases = require('../docs/case-index.json');
 const expectedCounts = Object.fromEntries(
   Object.entries(profiles).map(([name, tag]) => [
     name,
-    cases.filter((test) => test.tags.split(/\s+/).includes(tag)).length,
+    cases.filter(
+      (test) =>
+        test.tags.split(/\s+/).includes(tag) &&
+        (!profileSpecs[name] || test.file === profileSpecs[name]),
+    ).length,
   ]),
 );
 async function main() {
@@ -37,7 +44,11 @@ async function main() {
   try {
     // Cypress 16 separates browser-visible non-secret settings into expose.
     // Cucumber 28 reads tag expressions from that configuration namespace.
-    result = await cypress.run({ browser, config: { expose: { tags: profiles[profile] } } });
+    result = await cypress.run({
+      browser,
+      ...(profileSpecs[profile] ? { spec: profileSpecs[profile] } : {}),
+      config: { expose: { tags: profiles[profile] } },
+    });
   } catch (error) {
     fs.writeFileSync(path.join(current, 'startup-error.txt'), error.stack);
     throw error;

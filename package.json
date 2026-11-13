@@ -20,7 +20,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check:coverage": "node scripts/check-coverage.cjs",
-    "test:full-regression": "node scripts/run.cjs full-regression"
+    "test:full-regression": "node scripts/run.cjs full-regression",
+    "test:recording": "node scripts/run.cjs recording"
   },
   "devDependencies": {
     "cypress": "16.3.0",

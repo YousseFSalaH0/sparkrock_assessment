@@ -79,3 +79,7 @@ Product names and prices are defined once in products.json. Scenario keys such a
 Only three execution tags are used: @smoke, @regression and @full-regression. Smoke is included in regression, which is included in full regression. Routine invalid passwords and missing individual fields remain in regression; combined invalid inputs, empty/all-item cart boundaries, rounding, international inputs, network failures and proposed-rule checks receive full-regression coverage. Examples blocks can carry tags so different rows in one Outline belong to different suites.
 
 Both inputs and expectedError live in named fixture objects. For example, wrongPassword selects its username, password and expected rejection text; missingPostalCode selects its customer fields and expected checkout message. A missing expectedError fails clearly. Data-driven execution is provided by Scenario Outline and Examples without a separate tag.
+
+## Recording pair
+
+`npm run test:recording` selects only checkout scenarios carrying @smoke: TC-26 and TC-29. It uses the normal archive and report pipeline and expects exactly two cases. This command records automated execution evidence, not microphone narration or editor activity.
