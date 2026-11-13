@@ -7,100 +7,100 @@
     "priority": "P0",
     "steps": [
       "Given I am on the login page",
-      "When I log in with username \"standard_user\" and password \"secret_sauce\"",
+      "When I log in using \"validUser\" credentials",
       "Then the product catalog is displayed"
     ],
-    "tags": "@smoke",
+    "tags": "@full-regression @regression @smoke",
     "file": "cypress/e2e/01-authentication.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-02",
     "area": "Authentication",
-    "title": "Incorrect password",
+    "title": "Login validation - Incorrect password",
     "kind": "Negative",
     "priority": "P1",
     "steps": [
       "Given I am on the login page",
-      "When I log in with username \"standard_user\" and password \"incorrect\"",
-      "Then login is rejected with \"Username and password do not match any user in this service\""
+      "When I log in using \"wrongPassword\" credentials",
+      "Then login is rejected for \"wrongPassword\" credentials"
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/01-authentication.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-03",
     "area": "Authentication",
-    "title": "Unknown username",
+    "title": "Login validation - Unknown username",
     "kind": "Negative",
     "priority": "P1",
     "steps": [
       "Given I am on the login page",
-      "When I log in with username \"unknown_person\" and password \"secret_sauce\"",
-      "Then login is rejected with \"Username and password do not match any user in this service\""
+      "When I log in using \"wrongUsername\" credentials",
+      "Then login is rejected for \"wrongUsername\" credentials"
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/01-authentication.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-04",
     "area": "Authentication",
-    "title": "Missing username",
+    "title": "Login validation - Missing username",
     "kind": "Negative",
     "priority": "P1",
     "steps": [
       "Given I am on the login page",
-      "When I log in with username \"\" and password \"secret_sauce\"",
-      "Then login is rejected with \"Username is required\""
+      "When I log in using \"emptyUsername\" credentials",
+      "Then login is rejected for \"emptyUsername\" credentials"
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/01-authentication.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-05",
     "area": "Authentication",
-    "title": "Missing password",
+    "title": "Login validation - Missing password",
     "kind": "Negative",
     "priority": "P1",
     "steps": [
       "Given I am on the login page",
-      "When I log in with username \"standard_user\" and password \"\"",
-      "Then login is rejected with \"Password is required\""
+      "When I log in using \"emptyPassword\" credentials",
+      "Then login is rejected for \"emptyPassword\" credentials"
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/01-authentication.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-06",
     "area": "Authentication",
-    "title": "Both login fields empty",
+    "title": "Login validation - Both login fields empty",
     "kind": "Negative",
     "priority": "P1",
     "steps": [
       "Given I am on the login page",
-      "When I log in with username \"\" and password \"\"",
-      "Then login is rejected with \"Username is required\""
+      "When I log in using \"bothEmpty\" credentials",
+      "Then login is rejected for \"bothEmpty\" credentials"
     ],
-    "tags": "",
+    "tags": "@full-regression",
     "file": "cypress/e2e/01-authentication.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-07",
     "area": "Authentication",
-    "title": "Locked-out account",
+    "title": "Login validation - Locked-out account",
     "kind": "Negative",
     "priority": "P1",
     "steps": [
       "Given I am on the login page",
-      "When I log in with username \"locked_out_user\" and password \"secret_sauce\"",
-      "Then login is rejected with \"Sorry, this user has been locked out.\""
+      "When I log in using \"lockedUser\" credentials",
+      "Then login is rejected for \"lockedUser\" credentials"
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/01-authentication.feature",
     "mode": "Automated / UI setup"
   },
@@ -115,7 +115,7 @@
       "When I log out and revisit the inventory URL",
       "Then I must sign in again"
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/01-authentication.feature",
     "mode": "Automated / UI setup"
   },
@@ -127,84 +127,84 @@
     "priority": "P1",
     "steps": [
       "Given I am signed in through the UI",
-      "Then all six products have the expected names prices and descriptions"
+      "Then all reference products have the expected names prices and descriptions"
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/02-catalog.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-10",
     "area": "Catalog",
-    "title": "Product sorting az",
+    "title": "Product sorting nameAscending",
     "kind": "Positive",
     "priority": "P2",
     "steps": [
       "Given I am signed in through the UI",
-      "When I sort products by \"az\"",
-      "Then products are ordered by \"az\""
+      "When I sort products by \"nameAscending\"",
+      "Then products are ordered by \"nameAscending\""
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/02-catalog.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-11",
     "area": "Catalog",
-    "title": "Product sorting za",
+    "title": "Product sorting nameDescending",
     "kind": "Positive",
     "priority": "P2",
     "steps": [
       "Given I am signed in through the UI",
-      "When I sort products by \"za\"",
-      "Then products are ordered by \"za\""
+      "When I sort products by \"nameDescending\"",
+      "Then products are ordered by \"nameDescending\""
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/02-catalog.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-12",
     "area": "Catalog",
-    "title": "Product sorting lohi",
+    "title": "Product sorting priceAscending",
     "kind": "Positive",
     "priority": "P2",
     "steps": [
       "Given I am signed in through the UI",
-      "When I sort products by \"lohi\"",
-      "Then products are ordered by \"lohi\""
+      "When I sort products by \"priceAscending\"",
+      "Then products are ordered by \"priceAscending\""
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/02-catalog.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-13",
     "area": "Catalog",
-    "title": "Product sorting hilo",
+    "title": "Product sorting priceDescending",
     "kind": "Positive",
     "priority": "P2",
     "steps": [
       "Given I am signed in through the UI",
-      "When I sort products by \"hilo\"",
-      "Then products are ordered by \"hilo\""
+      "When I sort products by \"priceDescending\"",
+      "Then products are ordered by \"priceDescending\""
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/02-catalog.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-14",
     "area": "Catalog",
-    "title": "Product details and return navigation",
+    "title": "Product details and return navigation - backpack",
     "kind": "Positive",
     "priority": "P1",
     "steps": [
       "Given I am signed in through the UI",
-      "When I open the details for \"Sauce Labs Backpack\"",
-      "Then the details match \"Sauce Labs Backpack\""
+      "When I open the details for product \"backpack\"",
+      "Then the details match product \"backpack\" and I can return to the catalog"
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/02-catalog.feature",
     "mode": "Automated / UI setup"
   },
@@ -216,12 +216,12 @@
     "priority": "P0",
     "steps": [
       "Given I am signed in through the UI",
-      "When I add \"Sauce Labs Backpack\" to the cart",
-      "Then the cart badge shows 1 items",
+      "When I add basket \"singleProduct\" to the cart",
+      "Then the cart badge matches basket \"singleProduct\"",
       "When I open the cart",
-      "Then the cart contains exactly \"Sauce Labs Backpack\""
+      "Then the cart contains basket \"singleProduct\""
     ],
-    "tags": "@smoke",
+    "tags": "@full-regression @regression @smoke",
     "file": "cypress/e2e/03-cart.feature",
     "mode": "Automated / UI setup"
   },
@@ -233,13 +233,13 @@
     "priority": "P1",
     "steps": [
       "Given I am signed in through the UI",
-      "When I add \"Sauce Labs Backpack\" to the cart",
-      "And I remove \"Sauce Labs Backpack\" from the catalog",
-      "Then the cart badge shows 0 items",
+      "When I add basket \"singleProduct\" to the cart",
+      "And I remove basket \"singleProduct\" from the catalog",
+      "Then the cart badge is absent",
       "When I open the cart",
       "Then the cart is empty"
     ],
-    "tags": "",
+    "tags": "@full-regression",
     "file": "cypress/e2e/03-cart.feature",
     "mode": "Automated / UI setup"
   },
@@ -251,12 +251,12 @@
     "priority": "P1",
     "steps": [
       "Given I am signed in through the UI",
-      "When I add \"Sauce Labs Backpack\" to the cart",
+      "When I add basket \"singleProduct\" to the cart",
       "And I open the cart",
-      "And I remove \"Sauce Labs Backpack\" from the cart",
+      "And I remove basket \"singleProduct\" from the cart",
       "Then the cart is empty"
     ],
-    "tags": "",
+    "tags": "@full-regression",
     "file": "cypress/e2e/03-cart.feature",
     "mode": "Automated / UI setup"
   },
@@ -268,13 +268,13 @@
     "priority": "P1",
     "steps": [
       "Given I am signed in through the UI",
-      "When I add \"Sauce Labs Backpack\" to the cart",
+      "When I add basket \"singleProduct\" to the cart",
       "And I open the cart",
       "And I reload the page",
-      "Then the cart contains exactly \"Sauce Labs Backpack\"",
-      "And the cart badge shows 1 items"
+      "Then the cart contains basket \"singleProduct\"",
+      "And the cart badge matches basket \"singleProduct\""
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/03-cart.feature",
     "mode": "Automated / UI setup"
   },
@@ -286,13 +286,13 @@
     "priority": "P2",
     "steps": [
       "Given I am signed in through the UI",
-      "When I add \"Sauce Labs Backpack\" to the cart",
+      "When I add basket \"singleProduct\" to the cart",
       "And I open the cart",
       "And I continue shopping",
       "Then the product catalog is displayed",
-      "And the cart badge shows 1 items"
+      "And the cart badge matches basket \"singleProduct\""
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/03-cart.feature",
     "mode": "Automated / UI setup"
   },
@@ -304,12 +304,12 @@
     "priority": "P1",
     "steps": [
       "Given I am signed in through the UI",
-      "When I add all six products to the cart",
-      "Then the cart badge shows 6 items",
+      "When I add basket \"allProducts\" to the cart",
+      "Then the cart badge matches basket \"allProducts\"",
       "When I open the cart",
-      "Then the cart contains all six products"
+      "Then the cart contains basket \"allProducts\""
     ],
-    "tags": "",
+    "tags": "@full-regression",
     "file": "cypress/e2e/03-cart.feature",
     "mode": "Automated / UI setup"
   },
@@ -320,60 +320,60 @@
     "kind": "Positive",
     "priority": "P0",
     "steps": [
-      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
-      "When I enter valid customer information",
+      "Given I reach checkout through the UI with basket \"singleProduct\"",
+      "When I enter customer information using \"validCustomer\"",
       "And I continue to order review",
-      "Then the review contains \"Sauce Labs Backpack\" with correct totals"
+      "Then the review contains basket \"singleProduct\" with correct totals"
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/04-checkout.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-22",
     "area": "Checkout",
-    "title": "Required firstName validation",
+    "title": "Required checkout field missingFirstName",
     "kind": "Negative",
     "priority": "P1",
     "steps": [
-      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
-      "When I leave \"firstName\" blank and complete the other customer fields",
+      "Given I reach checkout through the UI with basket \"singleProduct\"",
+      "When I enter customer information using \"missingFirstName\"",
       "And I continue to order review",
-      "Then checkout is blocked with \"First Name is required\""
+      "Then checkout is blocked for customer \"missingFirstName\""
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/04-checkout.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-23",
     "area": "Checkout",
-    "title": "Required lastName validation",
+    "title": "Required checkout field missingLastName",
     "kind": "Negative",
     "priority": "P1",
     "steps": [
-      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
-      "When I leave \"lastName\" blank and complete the other customer fields",
+      "Given I reach checkout through the UI with basket \"singleProduct\"",
+      "When I enter customer information using \"missingLastName\"",
       "And I continue to order review",
-      "Then checkout is blocked with \"Last Name is required\""
+      "Then checkout is blocked for customer \"missingLastName\""
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/04-checkout.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-24",
     "area": "Checkout",
-    "title": "Required postalCode validation",
+    "title": "Required checkout field missingPostalCode",
     "kind": "Negative",
     "priority": "P1",
     "steps": [
-      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
-      "When I leave \"postalCode\" blank and complete the other customer fields",
+      "Given I reach checkout through the UI with basket \"singleProduct\"",
+      "When I enter customer information using \"missingPostalCode\"",
       "And I continue to order review",
-      "Then checkout is blocked with \"Postal Code is required\""
+      "Then checkout is blocked for customer \"missingPostalCode\""
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/04-checkout.feature",
     "mode": "Automated / UI setup"
   },
@@ -384,11 +384,12 @@
     "kind": "Negative",
     "priority": "P1",
     "steps": [
-      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
-      "When I continue to order review",
-      "Then checkout is blocked with \"First Name is required\""
+      "Given I reach checkout through the UI with basket \"singleProduct\"",
+      "When I enter customer information using \"emptyCustomer\"",
+      "And I continue to order review",
+      "Then checkout is blocked for customer \"emptyCustomer\""
     ],
-    "tags": "",
+    "tags": "@full-regression",
     "file": "cypress/e2e/04-checkout.feature",
     "mode": "Automated / UI setup"
   },
@@ -399,15 +400,15 @@
     "kind": "Negative/recovery",
     "priority": "P0",
     "steps": [
-      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
-      "When I leave \"postalCode\" blank and complete the other customer fields",
+      "Given I reach checkout through the UI with basket \"singleProduct\"",
+      "When I enter customer information using \"missingPostalCode\"",
       "And I continue to order review",
-      "Then checkout is blocked with \"Postal Code is required\"",
-      "When I enter valid customer information",
+      "Then checkout is blocked for customer \"missingPostalCode\"",
+      "When I enter customer information using \"validCustomer\"",
       "And I continue to order review",
-      "Then the review contains \"Sauce Labs Backpack\" with correct totals"
+      "Then the review contains basket \"singleProduct\" with correct totals"
     ],
-    "tags": "@recording @smoke",
+    "tags": "@full-regression @regression @smoke",
     "file": "cypress/e2e/04-checkout.feature",
     "mode": "Automated / UI setup"
   },
@@ -418,11 +419,11 @@
     "kind": "Positive",
     "priority": "P1",
     "steps": [
-      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
-      "When I cancel checkout",
-      "Then I return to the cart with \"Sauce Labs Backpack\""
+      "Given I reach checkout through the UI with basket \"singleProduct\"",
+      "When I cancel customer information",
+      "Then I return to the cart with basket \"singleProduct\""
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/04-checkout.feature",
     "mode": "Automated / UI setup"
   },
@@ -433,13 +434,13 @@
     "kind": "Positive",
     "priority": "P1",
     "steps": [
-      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
-      "When I enter valid customer information",
+      "Given I reach checkout through the UI with basket \"singleProduct\"",
+      "When I enter customer information using \"validCustomer\"",
       "And I continue to order review",
-      "And I cancel checkout",
-      "Then I return to products with 1 items retained"
+      "And I cancel order review",
+      "Then I return to products with basket \"singleProduct\" retained"
     ],
-    "tags": "",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/04-checkout.feature",
     "mode": "Automated / UI setup"
   },
@@ -450,14 +451,14 @@
     "kind": "Positive/E2E",
     "priority": "P0",
     "steps": [
-      "Given I reach checkout through the UI with \"Sauce Labs Backpack | Sauce Labs Bike Light\"",
-      "When I enter valid customer information",
+      "Given I reach checkout through the UI with basket \"twoProducts\"",
+      "When I enter customer information using \"validCustomer\"",
       "And I continue to order review",
-      "Then the review contains \"Sauce Labs Backpack | Sauce Labs Bike Light\" with correct totals",
+      "Then the review contains basket \"twoProducts\" with correct totals",
       "When I finish the order",
       "Then the order is confirmed and the cart is cleared"
     ],
-    "tags": "@recording @smoke",
+    "tags": "@full-regression @regression @smoke",
     "file": "cypress/e2e/04-checkout.feature",
     "mode": "Automated / UI setup"
   },
@@ -468,12 +469,12 @@
     "kind": "Positive",
     "priority": "P1",
     "steps": [
-      "Given checkout is prepared directly with \"Sauce Labs Onesie\"",
-      "When I enter valid customer information",
+      "Given checkout is prepared directly with basket \"lowPriceProduct\"",
+      "When I enter customer information using \"validCustomer\"",
       "And I continue to order review",
-      "Then the review contains \"Sauce Labs Onesie\" with correct totals"
+      "Then the review contains basket \"lowPriceProduct\" with correct totals"
     ],
-    "tags": "@fast",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/05-focused-checkout.feature",
     "mode": "Automated / direct setup"
   },
@@ -484,12 +485,12 @@
     "kind": "Boundary",
     "priority": "P0",
     "steps": [
-      "Given checkout is prepared directly with \"Sauce Labs Onesie | Sauce Labs Bike Light | Sauce Labs Fleece Jacket\"",
-      "When I enter valid customer information",
+      "Given checkout is prepared directly with basket \"roundingBasket\"",
+      "When I enter customer information using \"validCustomer\"",
       "And I continue to order review",
-      "Then the review contains \"Sauce Labs Onesie | Sauce Labs Bike Light | Sauce Labs Fleece Jacket\" with correct totals"
+      "Then the review contains basket \"roundingBasket\" with correct totals"
     ],
-    "tags": "@fast",
+    "tags": "@full-regression",
     "file": "cypress/e2e/05-focused-checkout.feature",
     "mode": "Automated / direct setup"
   },
@@ -500,13 +501,13 @@
     "kind": "Positive",
     "priority": "P0",
     "steps": [
-      "Given checkout is prepared directly with \"Sauce Labs Backpack\"",
-      "When I enter valid customer information",
+      "Given checkout is prepared directly with basket \"singleProduct\"",
+      "When I enter customer information using \"validCustomer\"",
       "And I continue to order review",
       "And I finish the order",
       "Then the order is confirmed and the cart is cleared"
     ],
-    "tags": "@fast",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/05-focused-checkout.feature",
     "mode": "Automated / direct setup"
   },
@@ -517,11 +518,11 @@
     "kind": "Positive",
     "priority": "P1",
     "steps": [
-      "Given checkout is prepared directly with \"Sauce Labs Backpack | Sauce Labs Bike Light\"",
-      "When I cancel checkout",
-      "Then I return to the cart with \"Sauce Labs Backpack | Sauce Labs Bike Light\""
+      "Given checkout is prepared directly with basket \"twoProducts\"",
+      "When I cancel customer information",
+      "Then I return to the cart with basket \"twoProducts\""
     ],
-    "tags": "@fast",
+    "tags": "@full-regression @regression",
     "file": "cypress/e2e/05-focused-checkout.feature",
     "mode": "Automated / direct setup"
   },
@@ -532,45 +533,42 @@
     "kind": "Boundary",
     "priority": "P2",
     "steps": [
-      "Given checkout is prepared directly with \"Sauce Labs Backpack\"",
-      "When I enter customer information",
-      "  | firstName | Zoë |",
-      "  | lastName | O'Neil |",
-      "  | postalCode | 00123 |",
+      "Given checkout is prepared directly with basket \"singleProduct\"",
+      "When I enter customer information using \"internationalCustomer\"",
       "And I continue to order review",
-      "Then the review contains \"Sauce Labs Backpack\" with correct totals"
+      "Then the review contains basket \"singleProduct\" with correct totals"
     ],
-    "tags": "@fast",
+    "tags": "@full-regression",
     "file": "cypress/e2e/05-focused-checkout.feature",
     "mode": "Automated / direct setup"
   },
   {
     "id": "TC-35",
     "area": "Network",
-    "title": "Product image replaced without blocking shopping",
+    "title": "Product image resilience - replacementImage",
     "kind": "Positive",
     "priority": "P2",
     "steps": [
-      "Given the backpack image response is \"replaced\"",
+      "Given the product image uses network case \"replacementImage\"",
       "And I am signed in through the UI",
-      "Then the \"replaced\" image response is observed and shopping still works"
+      "Then network case \"replacementImage\" is observed and shopping still works"
     ],
-    "tags": "@network",
+    "tags": "@full-regression",
     "file": "cypress/e2e/06-network.feature",
     "mode": "Automated / UI setup"
   },
   {
     "id": "TC-36",
     "area": "Network",
-    "title": "Product image unavailable without blocking shopping",
+    "title": "Product image resilience - missingImage",
     "kind": "Negative/resilience",
     "priority": "P2",
     "steps": [
-      "Given the backpack image response is \"unavailable\"",
+      "Given the product image uses network case \"missingImage\"",
       "And I am signed in through the UI",
-      "Then the \"unavailable\" image response is observed and shopping still works"
+      "Then network case \"missingImage\" is observed and shopping still works"
     ],
-    "tags": "@network",
+    "tags": "@full-regression",
     "file": "cypress/e2e/06-network.feature",
     "mode": "Automated / UI setup"
   },
@@ -581,15 +579,12 @@
     "kind": "Negative/assumption",
     "priority": "P1",
     "steps": [
-      "Given I reach checkout through the UI with \"Sauce Labs Backpack\"",
-      "When I enter customer information",
-      "  | firstName | <spaces> |",
-      "  | lastName | Tester |",
-      "  | postalCode | 02108 |",
+      "Given I reach checkout through the UI with basket \"singleProduct\"",
+      "When I enter customer information using \"whitespaceFirstName\"",
       "And I continue to order review",
       "Then whitespace-only first name is rejected under assumption A-03"
     ],
-    "tags": "@assumption",
+    "tags": "@full-regression",
     "file": "cypress/e2e/07-assumptions.feature",
     "mode": "Automated / proposed requirement"
   },
@@ -604,7 +599,7 @@
       "When I attempt checkout with an empty cart",
       "Then an empty order is blocked under assumption A-04"
     ],
-    "tags": "@assumption",
+    "tags": "@full-regression",
     "file": "cypress/e2e/07-assumptions.feature",
     "mode": "Automated / proposed requirement"
   },
@@ -635,5 +630,50 @@
     ],
     "tags": "@manual",
     "mode": "Manual / not executed"
+  },
+  {
+    "id": "TC-41",
+    "area": "Authentication",
+    "title": "Login validation - Both credentials incorrect",
+    "kind": "Negative",
+    "priority": "P1",
+    "steps": [
+      "Given I am on the login page",
+      "When I log in using \"bothWrong\" credentials",
+      "Then login is rejected for \"bothWrong\" credentials"
+    ],
+    "tags": "@full-regression",
+    "file": "cypress/e2e/01-authentication.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-42",
+    "area": "Catalog",
+    "title": "Product details and return navigation - bikeLight",
+    "kind": "Positive",
+    "priority": "P1",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I open the details for product \"bikeLight\"",
+      "Then the details match product \"bikeLight\" and I can return to the catalog"
+    ],
+    "tags": "@full-regression @regression",
+    "file": "cypress/e2e/02-catalog.feature",
+    "mode": "Automated / UI setup"
+  },
+  {
+    "id": "TC-43",
+    "area": "Catalog",
+    "title": "Product details and return navigation - onesie",
+    "kind": "Positive",
+    "priority": "P1",
+    "steps": [
+      "Given I am signed in through the UI",
+      "When I open the details for product \"onesie\"",
+      "Then the details match product \"onesie\" and I can return to the catalog"
+    ],
+    "tags": "@full-regression @regression",
+    "file": "cypress/e2e/02-catalog.feature",
+    "mode": "Automated / UI setup"
   }
 ]

@@ -1,36 +1,34 @@
 # Verified execution results
 
-Executed on 2026-11-12 from `C:/Users/Youssef/OneDrive/Desktop/sparkrock_assessment` against https://www.saucedemo.com.
+Executed on 2026-11-13 against https://www.saucedemo.com using Cypress 16.3.0, Chrome 155.0.8059.85 headless, Node 22.23.5 and Windows.
 
-## Baseline regression
+## Regression
 
 - Command: `npm test` after `. .\use-local-node.ps1`.
-- Cypress 16.3.0; Chrome 155.0.8059.85 (headless); Node 22.23.5; Windows.
-- Started: 2026-11-12T17:25:01.735Z. Ended: 2026-11-12T17:26:21.069Z (UTC).
-- **36 passed, 0 failed, 0 pending, 0 skipped.** Executed count matched the designed profile.
-- Includes five direct-setup cases and two real image-interception cases.
-- Report: [baseline Cucumber HTML](../reports/current/html/index.html).
-- Raw evidence: [run summary](../reports/current/run-summary.json), [Cucumber JSON](../reports/current/json/cucumber.json), NDJSON and six spec videos in the same run folder.
+- Started 2026-11-13T13:51:20.472Z; ended 2026-11-13T13:52:35.783Z (UTC).
+- **29 passed, 0 failed, 0 pending, 0 skipped.** Selection matched the documented @regression membership, including tagged Examples rows.
+- [Regression HTML](../reports/current/html/index.html) and [run summary](../reports/current/run-summary.json).
 
-## Proposed-requirement checks
+## Full regression
 
-- Command: `npm run test:assumptions`.
-- Same Chrome/Node/Cypress environment; two selected cases, no pending/skipped cases.
-- Started: 2026-11-12T17:23:26.186Z. Ended: 2026-11-12T17:24:24.980Z (UTC).
-- **0 passed, 2 failed** against explicitly proposed requirements A-03 and A-04.
-- TC-37: whitespace-only first name reaches review.
-- TC-38: empty cart reaches review.
-- Report: [assumption Cucumber HTML](../reports/assumptions/html/index.html). Screenshots, video and raw results are retained in that folder.
-- These are unconfirmed requirement gaps, not claimed violations of supplied business requirements. See [findings](findings.md).
+- Command: `npm run test:full-regression`.
+- Started 2026-11-13T13:49:15.318Z; ended 2026-11-13T13:51:08.386Z (UTC).
+- **41 executed: 39 passed, 2 failed, 0 pending, 0 skipped.** Selection matched @full-regression.
+- TC-37 failed because whitespace-only first name reaches review.
+- TC-38 failed because empty-cart checkout reaches review.
+- These are proposed requirements A-03/A-04, not confirmed violations of supplied requirements. The runner correctly returns a nonzero exit code.
+- [Full regression HTML](../reports/full-regression/html/index.html) and [run summary](../reports/full-regression/run-summary.json). Failure screenshots, videos and Cucumber JSON/NDJSON are in the same folder.
+
+Both runs verify the named product/customer/credential fixtures, dataset-based expected validation errors, per-screen page objects and feature-specific step definitions. Full regression includes three product detail datasets, five focused checkout setups and two network response cases.
 
 ## Checks and limitations
 
-- ESLint and the 40-case/38-scenario traceability check pass.
-- The five focused cases were separately verified in Chrome before the full regression.
-- Report generation was verified for both passing and failing runs. The local report preview was checked in the browser, including charts and feature navigation.
-- TC-39/40 are manual and **not executed**. No manual pass status is implied.
-- Edge execution and GitHub Actions execution are configured but not claimed as tested.
-- Earlier development runs in `reports/archive` include setup/configuration failures; they are troubleshooting history, not the final acceptance result.
-- Dependency audit: zero high/critical and four moderate transitive development dependency findings. Details in the local `reports/dependency-audit.json` file.
+- ESLint, formatting and 43-case/41-scenario traceability checks pass. The coverage check also verifies actual inherited tags against documented tags and checks suite nesting.
+- Smoke comprises four cases included in both executed suites; no separate smoke-only run is claimed.
+- TC-39/40 are manual and **not executed**.
+- Edge and GitHub Actions are configured but not claimed as executed.
+- HTML reports were regenerated and their files verified; browser preview was checked during the earlier delivery.
+- Older reports in archive/ and assumptions/ are historical evidence from earlier suite organization.
+- Dependency audit from the earlier delivery: zero high/critical and four moderate transitive development findings; no new dependency changes in this refactor.
 
-Reports/current changes on subsequent runs. The runner archives the previous current run. This document records the delivered verification and should be updated after substantive changes.
+The current report changes on later runs. The runner archives earlier reports before execution.

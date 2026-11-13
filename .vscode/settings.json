@@ -1,0 +1,47 @@
+{
+  "workbench.colorTheme": "GitHub Dark Default",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontSize": 14,
+  "editor.lineHeight": 23,
+  "editor.minimap.enabled": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.rulers": [100],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.useFlatConfig": true,
+  "eslint.validate": ["javascript"],
+  "prettier.requireConfig": true,
+  "[cucumber]": {
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2
+  },
+  "cucumber.features": ["cypress/e2e/**/*.feature"],
+  "cucumber.glue": ["cypress/steps/**/*.js"],
+  "files.exclude": {
+    "**/node_modules": true,
+    ".cache": true,
+    ".tools": true,
+    "reports/archive": true
+  },
+  "search.exclude": {
+    "**/node_modules/**": true,
+    ".cache/**": true,
+    ".tools/**": true,
+    "reports/**": true,
+    "package-lock.json": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.cache/**": true,
+    "**/.tools/**": true,
+    "**/reports/**": true
+  },
+  "terminal.integrated.env.windows": {
+    "PATH": "${workspaceFolder}\\.tools;${env:PATH}",
+    "CYPRESS_CACHE_FOLDER": "${workspaceFolder}\\.cache\\Cypress"
+  }
+}

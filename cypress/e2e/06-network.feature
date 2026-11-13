@@ -1,16 +1,13 @@
-@regression
+@full-regression
 Feature: Network
-  Business-focused UI coverage; see docs/test-cases.md for rationale and assumptions.
+  Real image requests are stubbed using named response datasets.
 
-  @TC-35 @network
-  Scenario: TC-35 Product image replaced without blocking shopping
-    Given the backpack image response is "replaced"
+  Scenario Outline: TC-<id> Product image resilience - <networkCase>
+    Given the product image uses network case "<networkCase>"
     And I am signed in through the UI
-    Then the "replaced" image response is observed and shopping still works
+    Then network case "<networkCase>" is observed and shopping still works
 
-  @TC-36 @network
-  Scenario: TC-36 Product image unavailable without blocking shopping
-    Given the backpack image response is "unavailable"
-    And I am signed in through the UI
-    Then the "unavailable" image response is observed and shopping still works
-
+    Examples:
+      | id | networkCase      |
+      | 35 | replacementImage |
+      | 36 | missingImage     |

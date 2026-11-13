@@ -1,0 +1,15 @@
+{
+  "replacementImage": {
+    "product": "backpack",
+    "statusCode": 200,
+    "fixture": "replacement.svg",
+    "contentType": "image/svg+xml",
+    "naturalWidth": 64
+  },
+  "missingImage": {
+    "product": "backpack",
+    "statusCode": 404,
+    "body": "",
+    "naturalWidth": 0
+  }
+}

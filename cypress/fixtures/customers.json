@@ -1,0 +1,41 @@
+{
+  "validCustomer": {
+    "firstName": "Alex",
+    "lastName": "Tester",
+    "postalCode": "02108"
+  },
+  "missingFirstName": {
+    "firstName": "",
+    "lastName": "Tester",
+    "postalCode": "02108",
+    "expectedError": "First Name is required"
+  },
+  "missingLastName": {
+    "firstName": "Alex",
+    "lastName": "",
+    "postalCode": "02108",
+    "expectedError": "Last Name is required"
+  },
+  "missingPostalCode": {
+    "firstName": "Alex",
+    "lastName": "Tester",
+    "postalCode": "",
+    "expectedError": "Postal Code is required"
+  },
+  "internationalCustomer": {
+    "firstName": "Zoë",
+    "lastName": "O'Neil",
+    "postalCode": "00123"
+  },
+  "whitespaceFirstName": {
+    "firstName": "   ",
+    "lastName": "Tester",
+    "postalCode": "02108"
+  },
+  "emptyCustomer": {
+    "firstName": "",
+    "lastName": "",
+    "postalCode": "",
+    "expectedError": "First Name is required"
+  }
+}

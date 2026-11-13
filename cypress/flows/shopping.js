@@ -1,17 +1,22 @@
+import { loginWithFixture } from './authentication';
 import { login } from '../pages/login';
 import { catalog } from '../pages/catalog';
-import { header } from '../pages/components';
+import { cart } from '../pages/cart';
+import { header } from '../components/header';
+import { checkoutInformation } from '../pages/checkout-information';
+import { getBasket } from '../data/test-data';
 
-// Flows compose page actions without obscuring the business assertions in steps.
-export function loginThroughUi() {
+/** A Given precondition composes the same login action used by authentication tests. */
+export function loginThroughUi(credentialsKey = 'validUser') {
   login.visit();
-  login.submit();
+  loginWithFixture(credentialsKey);
   catalog.expectLoaded();
 }
-export function startCheckoutThroughUi(names) {
+/** Complete UI setup: resolve a basket once and add its real products through UI. */
+export function startCheckoutThroughUi(basketKey) {
   loginThroughUi();
-  names.forEach((name) => catalog.add(name));
+  getBasket(basketKey).forEach((key) => catalog.add(key));
   header.openCart();
-  cy.byTest('checkout').click();
-  cy.location('pathname').should('eq', '/checkout-step-one.html');
+  cart.checkout();
+  checkoutInformation.expectLoaded();
 }

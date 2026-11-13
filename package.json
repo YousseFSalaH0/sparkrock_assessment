@@ -11,11 +11,7 @@
     "test": "node scripts/run.cjs regression",
     "test:smoke": "node scripts/run.cjs smoke",
     "test:regression": "node scripts/run.cjs regression",
-    "test:fast": "node scripts/run.cjs fast",
-    "test:network": "node scripts/run.cjs network",
-    "test:assumptions": "node scripts/run.cjs assumptions",
     "test:all": "node scripts/run.cjs all",
-    "test:recording": "node scripts/run.cjs recording",
     "test:chrome": "node scripts/run.cjs regression chrome",
     "test:edge": "node scripts/run.cjs regression edge",
     "report": "node scripts/report.cjs",
@@ -23,7 +19,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check:coverage": "node scripts/check-coverage.cjs"
+    "check:coverage": "node scripts/check-coverage.cjs",
+    "test:full-regression": "node scripts/run.cjs full-regression"
   },
   "devDependencies": {
     "cypress": "16.3.0",
@@ -34,7 +31,8 @@
     "eslint": "9.39.1",
     "@eslint/js": "9.39.1",
     "globals": "16.5.0",
-    "prettier": "3.6.2"
+    "prettier": "3.6.2",
+    "@cucumber/gherkin": "42.0.1"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": [

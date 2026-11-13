@@ -1,0 +1,22 @@
+{
+  "nameAscending": {
+    "option": "az",
+    "field": "name",
+    "descending": false
+  },
+  "nameDescending": {
+    "option": "za",
+    "field": "name",
+    "descending": true
+  },
+  "priceAscending": {
+    "option": "lohi",
+    "field": "price",
+    "descending": false
+  },
+  "priceDescending": {
+    "option": "hilo",
+    "field": "price",
+    "descending": true
+  }
+}

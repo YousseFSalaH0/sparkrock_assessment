@@ -1,28 +1,33 @@
-@regression
+@full-regression
 Feature: Catalog
   Business-focused UI coverage; see docs/test-cases.md for rationale and assumptions.
 
-  @TC-09 
+  @regression
   Scenario: TC-09 Catalog completeness and price integrity
     Given I am signed in through the UI
-    Then all six products have the expected names prices and descriptions
+    Then all reference products have the expected names prices and descriptions
 
-  @data-driven
+  @regression
   Scenario Outline: TC-<id> Product sorting <order>
     Given I am signed in through the UI
     When I sort products by "<order>"
     Then products are ordered by "<order>"
 
     Examples:
-      | id | order |
-      | 10 | az |
-      | 11 | za |
-      | 12 | lohi |
-      | 13 | hilo |
+      | id | order           |
+      | 10 | nameAscending   |
+      | 11 | nameDescending  |
+      | 12 | priceAscending  |
+      | 13 | priceDescending |
 
-  @TC-14 
-  Scenario: TC-14 Product details and return navigation
+  @regression
+  Scenario Outline: TC-<id> Product details and return navigation - <product>
     Given I am signed in through the UI
-    When I open the details for "Sauce Labs Backpack"
-    Then the details match "Sauce Labs Backpack"
+    When I open the details for product "<product>"
+    Then the details match product "<product>" and I can return to the catalog
 
+    Examples:
+      | id | product   |
+      | 14 | backpack  |
+      | 42 | bikeLight |
+      | 43 | onesie    |

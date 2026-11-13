@@ -10,14 +10,14 @@ Scope: authentication, six-product catalog, four sorts, details, cart CRUD/navig
 
 P0: access guard, purchase completion, totals and recovery. P1: lost cart state, wrong item, missing mandatory information and cancellation. P2: sorting, secondary display and image resilience. Prioritize critical customer outcomes rather than accumulating similar clicks.
 
-The design has 40 cases: 36 baseline automation, 2 proposed-rule automation, 2 manual. Boundary coverage includes zero/one/all six catalog items, missing fields, decimal rounding, international names and leading-zero postal values. Without specified maximum lengths or postal formats, do not invent arbitrary validation limits. Extend cases after clarification.
+The design has 43 cases: 41 automated (including 2 proposed-rule checks) and 2 manual. Boundary coverage includes zero/one/all six catalog items, missing fields, decimal rounding, international names and leading-zero postal values. Without specified maximum lengths or postal formats, do not invent arbitrary validation limits. Extend cases after clarification.
 
 ## Techniques
 
 - Equivalence classes: valid/invalid/locked/missing credentials; populated/missing checkout fields.
 - Boundary selection: empty cart, final item removal, complete catalog, whitespace-only name and cent rounding.
 - State transitions: catalog to cart to information to review to completion; cancel/logout/reload.
-- Data-driven outlines: six credential examples, four sort examples, three required-field examples; each row maps to a unique TC ID.
+- Data-driven outlines: seven negative credential examples, four sort examples, three product-detail examples, three required-field examples and two network-response examples; each row maps to a unique TC ID.
 - Fault injection: deterministic replacement image and unavailable image via a real intercepted GET.
 - Independent oracles: fixture-based item identity/prices, integer-cent subtotal/tax calculation, exact error and navigation checks.
 
@@ -33,7 +33,7 @@ Exactly TC-30–34 bypass setup by seeding known browser state before React moun
 
 Target https://www.saucedemo.com; desktop 1280x800; Chrome baseline. Optional installed Chrome/Edge profiles. Dependency versions are pinned; use npm ci for reproduction. Public-site changes and availability are external risks. Browser diversity is only claimed for actually executed runs. CI workflow is supplied; its cloud execution is not claimed until run on GitHub.
 
-Entry: site reachable, dependencies installed, fixtures reviewed, assumptions recorded. Exit for baseline: all 36 cases pass without skipped/pending tests, report generated, diagnostics retained. Assumption checks and manual status are reported separately. A baseline green result never closes a proposed-rule finding automatically.
+Entry: site reachable, dependencies installed, fixtures reviewed, assumptions recorded. Exit for baseline: all 29 regression cases pass without skipped/pending tests, report generated, diagnostics retained. Assumption checks and manual status are reported separately. A baseline green result never closes a proposed-rule finding automatically.
 
 ## Reporting and triage
 
@@ -42,3 +42,11 @@ Each scenario/example has a TC ID shared with the design. The runner preserves o
 ## Requirement clarification backlog
 
 Confirm whitespace trimming, empty-cart checkout policy, tax jurisdiction/rate, postal validation and maximum lengths, intended supported browsers, mobile support and accessibility target. These questions are not answered by the current demo implementation alone.
+
+## Maintainable data and bindings
+
+Seven feature-specific step files plus common.steps.js register shared expressions once. Each application screen has a page object; shared navigation belongs to components/header.js. Flows compose page actions. Comments explain responsibilities, synchronization and test-oracle assumptions rather than narrating every statement.
+
+## Suite tiers
+
+Smoke: 4 critical cases. Regression: 29 routine positive and negative cases, including smoke. Full regression: all 41 automated cases, including regression and 12 additional corner/proposed-rule cases. TC-37 and TC-38 remain visibly failing against proposed requirements. Full regression therefore returns a nonzero exit code until the requirements or application behavior are resolved. Only @smoke, @regression and @full-regression are used as execution tags.

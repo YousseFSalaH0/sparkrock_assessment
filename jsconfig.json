@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "resolveJsonModule": true,
+    "types": ["cypress", "node"]
+  },
+  "include": ["cypress/**/*.js", "cypress.config.js", "scripts/**/*.cjs"],
+  "exclude": ["node_modules", ".cache", ".tools", "reports"]
+}

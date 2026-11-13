@@ -1,7 +1,9 @@
+import credentials from '../fixtures/credentials.json';
+
 Cypress.Commands.add('byTest', (id) => cy.get(`[data-test="${id}"]`));
 
 /**
- * White-box setup for exactly five @fast scenarios. Sauce Demo has no login or
+ * White-box setup for exactly five focused-checkout scenarios. Sauce Demo has no login or
  * cart API: seed its documented browser state before React mounts. This bypasses
  * setup only; every action and assertion under test still uses the real UI.
  */
@@ -11,11 +13,11 @@ Cypress.Commands.add('seedCheckout', (productIds) => {
   // Unlike failOnStatusCode:false this still fails on a genuine entry-page error.
   cy.visit('/', {
     onBeforeLoad(win) {
-      win.document.cookie = 'session-username=standard_user; path=/';
+      win.document.cookie = `session-username=${credentials.validUser.username}; path=/`;
       win.localStorage.setItem('cart-contents', JSON.stringify(productIds));
       win.history.replaceState(null, '', '/checkout-step-one.html');
     },
   });
   cy.location('pathname').should('eq', '/checkout-step-one.html');
-  cy.getCookie('session-username').its('value').should('eq', 'standard_user');
+  cy.getCookie('session-username').its('value').should('eq', credentials.validUser.username);
 });

@@ -1,6 +1,6 @@
 # Recording preparation and walkthrough
 
-The candidate will choose two cases after reviewing the working project. Suggested pair: TC-29 (full purchase) and TC-26 (validation/recovery). Both currently carry @recording; move that tag if choosing another pair.
+The candidate will choose two cases after reviewing the working project. Suggested pair: TC-29 (full purchase) and TC-26 (validation/recovery). Both belong to the smoke and regression suites. Select the checkout feature interactively when practicing.
 
 ## Preparation before recording
 
@@ -34,10 +34,14 @@ The candidate will choose two cases after reviewing the working project. Suggest
 ```sh
 npm run lint
 npm run check:coverage
-npm run test:recording
+npm run test:smoke
 npm run report:serve
 ```
 
-During development, narrow by feature or use a temporary dedicated tag. Preserve final traceability and restore all selected implementation before handover. Explain failures honestly if they occur. Do not claim a prepared replay or an execution-only video is live implementation.
+During development, narrow by feature or select the desired scenario in the interactive runner. Preserve final traceability and restore all selected implementation before handover. Explain failures honestly if they occur. Do not claim a prepared replay or an execution-only video is live implementation.
 
 End by showing the report and discussing limitations: five white-box setup cases, image mocking rather than nonexistent APIs, two proposed-rule findings, manual checks not yet performed. Upload the actual narrated video separately and verify accessibility of both video and public repository before submitting.
+
+## Refactored implementation map
+
+For TC-26 and TC-29, use steps/checkout.steps.js, flows/shopping.js and the checkout-information, checkout-review and checkout-complete page objects under cypress/. Shared login uses flows/authentication.js. The twoProducts basket references backpack and bikeLight in fixtures/products.json; customer values come from fixtures/customers.json. Explain fixture keys, independent expected prices and the assumed tax rule while recording. Do not recreate shared step definitions in a second file: all step files are registered globally.

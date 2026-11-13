@@ -1,0 +1,7 @@
+{
+  "singleProduct": ["backpack"],
+  "twoProducts": ["backpack", "bikeLight"],
+  "lowPriceProduct": ["onesie"],
+  "roundingBasket": ["onesie", "bikeLight", "fleeceJacket"],
+  "allProducts": ["bikeLight", "boltShirt", "onesie", "redShirt", "backpack", "fleeceJacket"]
+}

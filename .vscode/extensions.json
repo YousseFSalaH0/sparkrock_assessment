@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "CucumberOpen.cucumber-official",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "EditorConfig.EditorConfig",
+    "PKief.material-icon-theme",
+    "GitHub.github-vscode-theme",
+    "redhat.vscode-yaml",
+    "andrew-codes.cypress-snippets"
+  ]
+}

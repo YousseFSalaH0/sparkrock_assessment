@@ -1,26 +1,24 @@
+require('./check-coverage.cjs');
 const fs = require('node:fs');
 const path = require('node:path');
 const cypress = require('cypress');
 const { generateReport } = require('./report.cjs');
 
+// Suite membership is explicit in Gherkin; full regression includes corner cases
+// and the two proposed-requirement checks, whose known failures stay visible.
 const profiles = {
-  regression: 'not @assumption',
+  regression: '@regression',
   smoke: '@smoke',
-  fast: '@fast',
-  network: '@network',
-  assumptions: '@assumption',
-  all: '',
-  recording: '@recording',
+  'full-regression': '@full-regression',
+  all: '@full-regression',
 };
-const expectedCounts = {
-  regression: 36,
-  smoke: 4,
-  fast: 5,
-  network: 2,
-  assumptions: 2,
-  all: 38,
-  recording: 2,
-};
+const cases = require('../docs/case-index.json');
+const expectedCounts = Object.fromEntries(
+  Object.entries(profiles).map(([name, tag]) => [
+    name,
+    cases.filter((test) => test.tags.split(/\s+/).includes(tag)).length,
+  ]),
+);
 async function main() {
   const profile = process.argv[2] || 'regression';
   const browser = process.argv[3] || 'chrome';
